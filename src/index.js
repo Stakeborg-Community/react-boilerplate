@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {
-  BrowserRouter,
+  HashRouter,
   Routes,
   Route
 } from "react-router-dom";
@@ -15,24 +15,26 @@ import BasicLayout from './layout';
 const rootElement = document.getElementById("root");
 
 ReactDOM.render(
- <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<React.StrictMode><App /></React.StrictMode>} />
-      <Route path="route1" element={<Route1 />} />
-      <Route path="route2" element={<Route2 />} />
-      <Route
-      path="*"
-      element={
-        <BasicLayout breadcrumb="disabled">
-          <div style={{textAlign: 'center'}}>
-            <h1>404 Not found</h1>
-            <h4>There's nothing here!</h4>
-          </div>
-        </BasicLayout>
-      }
-    />
-    </Routes>
-  </BrowserRouter>,
+<React.StrictMode>
+  <HashRouter>
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="route1" element={<Route1 />} />
+        <Route path="route2" element={<Route2 />} />
+        <Route
+        path="*"
+        element={
+          <BasicLayout breadcrumb="disabled">
+            <div style={{textAlign: 'center'}}>
+              <h1>404 Not found</h1>
+              <h4>There's nothing here!</h4>
+            </div>
+          </BasicLayout>
+        }
+      />
+      </Routes>
+    </HashRouter>
+  </React.StrictMode>,
   rootElement
 );
 
